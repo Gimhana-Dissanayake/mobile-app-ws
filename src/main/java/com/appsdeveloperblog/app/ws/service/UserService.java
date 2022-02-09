@@ -2,6 +2,8 @@ package com.appsdeveloperblog.app.ws.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.List;
+
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 
 public interface UserService extends UserDetailsService{
@@ -15,5 +17,7 @@ public interface UserService extends UserDetailsService{
 	UserDto updateUser(String userId,UserDto userDto);
 
 	void deleteUser(String userId);
+
+	List<UserDto> getUsers(int page, int limit);
 	
 }
