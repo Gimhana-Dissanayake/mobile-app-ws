@@ -1,5 +1,6 @@
 package com.appsdeveloperblog.app.ws.ui.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -53,8 +54,11 @@ public class UserController {
 
 		if(userDetails.getFirstName().isEmpty()) throw new UserServiceException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
 		
-		UserDto userDto = new UserDto();
-		BeanUtils.copyProperties(userDetails, userDto);
+		// UserDto userDto = new UserDto();
+		// BeanUtils.copyProperties(userDetails, userDto);
+
+		ModelMapper modalMapper = new ModelMapper();
+		UserDto userDto = modalMapper.map(userDetails, UserDto.class);
 		
 		UserDto createdUser = userService.createUser(userDto);
 		BeanUtils.copyProperties(createdUser, returnValue);

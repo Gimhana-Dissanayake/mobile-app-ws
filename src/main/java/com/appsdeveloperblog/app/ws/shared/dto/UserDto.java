@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.shared.dto;
 
+import java.util.List;
+
 import java.io.Serializable;
 
 public class UserDto implements Serializable{
@@ -13,6 +15,8 @@ public class UserDto implements Serializable{
 	private String encryptedPassword;
 	private String emailVerificationToken;
 	private Boolean emailVerificationStatus = false;
+	private List<AdressDTO> addresses;
+
 	public long getId() {
 		return id;
 	}
