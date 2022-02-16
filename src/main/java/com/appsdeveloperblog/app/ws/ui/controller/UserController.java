@@ -61,7 +61,7 @@ public class UserController {
 		UserDto userDto = modalMapper.map(userDetails, UserDto.class);
 		
 		UserDto createdUser = userService.createUser(userDto);
-		BeanUtils.copyProperties(createdUser, returnValue);
+		returnValue = modalMapper.map(createdUser,  UserRest.class);
 		
 		return returnValue;
 	}
